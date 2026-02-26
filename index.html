@@ -453,39 +453,40 @@
       </details>
     </section>
 
-   <section class="cta" id="lien-he">
-  <div>
-    <h3>Dùng GiaAn qua WhatsApp</h3>
-    <p>
-      Anh/chị chỉ cần nhắn tin qua WhatsApp. 
-      Không cần cài thêm gì.
-    </p>
+    <section class="cta" id="lien-he">
+      <div>
+        <h3>Dùng GiaAn qua WhatsApp</h3>
+        <p>
+          Anh/chị chỉ cần nhắn tin qua WhatsApp.
+          Không cần cài thêm gì.
+        </p>
 
-    <div class="form">
-      <a 
-        class="btn btn-primary" 
-        href="https://wa.me/4915255474358"
-        target="_blank"
-      >
-        Nhắn WhatsApp ngay →
-      </a>
-    </div>
+        <div class="form">
+          <a
+            class="btn btn-primary"
+            href="https://wa.me/4915255474358"
+            target="_blank"
+            rel="noopener"
+          >
+            Nhắn WhatsApp ngay →
+          </a>
+        </div>
 
-    <div style="margin-top:10px; font-size:14px; color:var(--muted);">
-      Số WhatsApp: <b>0152-55474358</b>
-    </div>
-  </div>
-
-  <div style="min-width:260px">
-    <div class="box" style="border-color: rgba(194,65,12,.18); background: rgba(255,255,255,.85)">
-      <b>Gợi ý nhỏ</b>
-      <div style="color:var(--muted); margin-top:6px; font-size:14px">
-        Anh/chị chỉ cần gửi: <br>
-        “Chào GiaAn, tôi muốn dùng thử.”
+        <div style="margin-top:10px; font-size:14px; color:var(--muted);">
+          Số WhatsApp: <b>0152-55474358</b>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+
+      <div style="min-width:260px">
+        <div class="box" style="border-color: rgba(194,65,12,.18); background: rgba(255,255,255,.85)">
+          <b>Gợi ý nhỏ</b>
+          <div style="color:var(--muted); margin-top:6px; font-size:14px">
+            Anh/chị chỉ cần gửi: <br>
+            “Chào GiaAn, tôi muốn dùng thử.”
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer>
       <div>© <span id="year"></span> GiaAn.de</div>
@@ -499,27 +500,8 @@
   </div>
 
   <script>
+    // Keep only the year — removed old leadForm script (since form no longer exists)
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    document.getElementById("leadForm").addEventListener("submit", function(e){
-      e.preventDefault();
-      const email = document.getElementById("email").value.trim();
-      const note  = document.getElementById("note").value.trim();
-      const msgEl = document.getElementById("formMsg");
-
-      if(!email){
-        msgEl.textContent = "Anh/chị vui lòng nhập email giúp em nhé.";
-        return;
-      }
-
-      const subject = encodeURIComponent("Đăng ký GiaAn (beta)");
-      const body = encodeURIComponent(
-        "Xin chào,\n\nTôi muốn đăng ký dùng thử GiaAn (beta).\n\nEmail: " + email + "\nGhi chú: " + (note || "-") + "\n\nCảm ơn!"
-      );
-
-      window.location.href = "mailto:hello@giaan.de?subject=" + subject + "&body=" + body;
-      msgEl.textContent = "Đang mở Email để gửi đăng ký…";
-    });
   </script>
 </body>
 </html>
