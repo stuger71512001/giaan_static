@@ -19,6 +19,7 @@
       --accent:#c2410c;
       --accent2:#ea580c;
       --accentSoft:rgba(194,65,12,.10);
+      --accentRing:rgba(194,65,12,.22);
 
       --r:22px;
       --r2:16px;
@@ -29,6 +30,7 @@
     }
 
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
@@ -38,26 +40,30 @@
         radial-gradient(900px 520px at 85% 0%, rgba(234,88,12,.10), transparent 55%),
         var(--bg);
       line-height:1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
+    a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:26px}
 
-    /* HEADER */
+    /* Header */
     header{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      padding:16px 0 24px;
+      padding:6px 0 22px;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:16px;
+      gap:12px;
+      min-width: 220px;
     }
 
-    /* LOGO 88px */
+    /* ===== LOGO UPDATED ===== */
     .logo{
       width:88px;
       height:88px;
@@ -79,38 +85,80 @@
         height:60px;
       }
     }
+    /* ========================= */
 
     .brand-title{
       font-weight:900;
-      font-size:20px;
+      letter-spacing:.2px
     }
 
     .brand-sub{
       font-size:13px;
       color:var(--muted);
-      margin-top:4px;
+      margin-top:2px
     }
 
     nav{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
+      justify-content:flex-end
     }
 
     .navlink{
       font-size:14px;
       color:var(--muted);
-      padding:10px 14px;
+      padding:10px 12px;
       border-radius:999px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.75);
+      backdrop-filter: blur(8px);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, color .15s ease;
     }
 
-    /* HERO */
+    .navlink:hover{
+      color:var(--text);
+      border-color: rgba(15,23,42,.14);
+      box-shadow: 0 12px 30px rgba(15,23,42,.05);
+      transform: translateY(-1px);
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:800;
+      font-size:16px;
+      border:1px solid var(--line);
+      background:#fff;
+      cursor:pointer;
+      box-shadow: 0 10px 24px rgba(15,23,42,.06);
+      white-space:nowrap;
+      transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(15,23,42,.08);
+    }
+
+    .btn-primary{
+      border:none;
+      color:#fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 18px 50px rgba(194,65,12,.20);
+    }
+
+    /* Hero */
     .hero{
       display:grid;
       grid-template-columns: 1.1fr .9fr;
       gap:18px;
+      align-items:stretch;
     }
 
     @media (max-width: 980px){
@@ -127,37 +175,25 @@
     .hero-left{padding:34px}
 
     h1{
+      margin:0 0 14px;
       font-size:48px;
       line-height:1.06;
-      margin:0 0 14px;
+      letter-spacing:-.8px;
     }
 
     .lead{
+      margin:0 0 18px;
       color:var(--muted);
       font-size:18px;
     }
 
-    .btn{
-      display:inline-flex;
-      padding:12px 16px;
-      border-radius:14px;
-      font-weight:800;
-      border:none;
-      cursor:pointer;
-      text-decoration:none;
-    }
-
-    .btn-primary{
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color:white;
-    }
-
     footer{
-      margin:40px 0 10px;
+      margin:22px 0 8px;
+      color:rgba(91,102,122,.9);
       font-size:13px;
-      color:var(--muted);
       display:flex;
       justify-content:space-between;
+      gap:12px;
       flex-wrap:wrap;
     }
   </style>
@@ -184,31 +220,8 @@
       </nav>
     </header>
 
-    <main class="hero">
-      <section class="card hero-left">
-        <h1>
-          Thấy phong bì có chữ “Finanzamt”
-          là tim đập nhanh?
-        </h1>
-
-        <p class="lead">
-          GiaAn giúp anh/chị hiểu thư từ, giữ giấy tờ gọn gàng và nhắc trước khi tới hạn.
-        </p>
-
-        <div style="margin-top:20px;">
-          <a class="btn btn-primary" href="https://wa.me/4915255474358" target="_blank">
-            Nhắn WhatsApp ngay →
-          </a>
-        </div>
-      </section>
-    </main>
-
     <footer>
       <div>© <span id="year"></span> GiaAn.de</div>
-      <div>
-        <a href="/impressum">Impressum</a> ·
-        <a href="/privacy">Datenschutz</a>
-      </div>
     </footer>
   </div>
 
