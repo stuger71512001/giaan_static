@@ -7,20 +7,22 @@
   <meta name="description" content="Thấy phong bì có chữ Finanzamt là tim đập nhanh? GiaAn giúp anh/chị hiểu thư từ và giữ giấy tờ cho gọn, nhắc trước khi tới hạn." />
   <meta name="robots" content="index,follow" />
   <link rel="icon" type="image/png" href="assets/logo.png">
-
   <style>
     :root{
+      /* Apple-minimal base */
       --bg:#ffffff;
       --text:#0b0f18;
       --muted:#5b667a;
       --line:rgba(15,23,42,.10);
       --card:#ffffff;
 
+      /* dark orange accent */
       --accent:#c2410c;
       --accent2:#ea580c;
       --accentSoft:rgba(194,65,12,.10);
       --accentRing:rgba(194,65,12,.22);
 
+      /* radius + shadow (rất nhẹ kiểu Apple) */
       --r:22px;
       --r2:16px;
       --shadow: 0 16px 50px rgba(15,23,42,.06);
@@ -43,7 +45,6 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:26px}
 
@@ -55,15 +56,12 @@
       gap:14px;
       padding:6px 0 22px;
     }
-
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
       min-width: 220px;
     }
-
-    /* ===== LOGO UPDATED ===== */
     .logo{
       width:88px;
       height:88px;
@@ -85,26 +83,11 @@
         height:60px;
       }
     }
-    /* ========================= */
+    
+    .brand-title{font-weight:900; letter-spacing:.2px}
+    .brand-sub{font-size:13px; color:var(--muted); margin-top:2px}
 
-    .brand-title{
-      font-weight:900;
-      letter-spacing:.2px
-    }
-
-    .brand-sub{
-      font-size:13px;
-      color:var(--muted);
-      margin-top:2px
-    }
-
-    nav{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end
-    }
-
+    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
     .navlink{
       font-size:14px;
       color:var(--muted);
@@ -115,7 +98,6 @@
       backdrop-filter: blur(8px);
       transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, color .15s ease;
     }
-
     .navlink:hover{
       color:var(--text);
       border-color: rgba(15,23,42,.14);
@@ -140,30 +122,30 @@
       white-space:nowrap;
       transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
     }
-
     .btn:hover{
       transform: translateY(-1px);
       box-shadow: 0 16px 40px rgba(15,23,42,.08);
     }
-
+    .btn:active{transform: translateY(0)}
     .btn-primary{
       border:none;
       color:#fff;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       box-shadow: 0 18px 50px rgba(194,65,12,.20);
     }
+    .btn-primary:hover{filter: brightness(1.02)}
+    .btn-ghost{
+      background: rgba(255,255,255,.78);
+    }
 
-    /* Hero */
+    /* Layout */
     .hero{
       display:grid;
       grid-template-columns: 1.1fr .9fr;
       gap:18px;
       align-items:stretch;
     }
-
-    @media (max-width: 980px){
-      .hero{grid-template-columns:1fr}
-    }
+    @media (max-width: 980px){ .hero{grid-template-columns:1fr} }
 
     .card{
       background: var(--card);
@@ -172,19 +154,207 @@
       box-shadow: var(--shadow);
     }
 
+    /* Hero left */
     .hero-left{padding:34px}
-
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.78);
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:16px;
+    }
     h1{
       margin:0 0 14px;
       font-size:48px;
       line-height:1.06;
       letter-spacing:-.8px;
     }
+    @media (max-width: 520px){ h1{font-size:36px} }
+
+    /* Bạn giữ class="h2" — mình style nó để giống highlight */
+    .h2, .hl{
+      color:var(--accent);
+      background: var(--accentSoft);
+      padding: 0 10px;
+      border-radius: 12px;
+      border:1px solid rgba(194,65,12,.18);
+      white-space:nowrap;
+    }
 
     .lead{
       margin:0 0 18px;
       color:var(--muted);
       font-size:18px;
+    }
+
+    .softbox{
+      margin-top:14px;
+      padding:14px 16px;
+      border-radius: var(--r2);
+      border:1px solid rgba(194,65,12,.18);
+      background: rgba(194,65,12,.06);
+      color: rgba(11,15,24,.82);
+      font-size:15px;
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    /* Hero right image */
+    .hero-right{padding:18px}
+    .hero-media{
+      height:100%;
+      min-height: 360px;
+      border-radius: var(--r);
+      overflow:hidden;
+      border:1px solid var(--line);
+      background: #fff;
+      display:grid;
+      place-items:center;
+      box-shadow: var(--shadow2);
+    }
+    .hero-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.01);
+    }
+    .hero-note{
+      margin-top:12px;
+      padding:14px 16px;
+      border-radius: var(--r2);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.78);
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* Sections */
+    .section{margin-top:26px}
+    .section-title{
+      margin:0 0 14px;
+      font-size:20px;
+      letter-spacing:-.2px;
+      font-weight:900;
+    }
+
+    /* Cards 1/2/3 — Apple clean: equal height, aligned, roomy */
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){ .grid3{grid-template-columns:1fr} }
+
+    .mini{
+      padding:20px;
+      border-radius: var(--r);
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow: 0 12px 30px rgba(15,23,42,.04);
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .mini:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px rgba(15,23,42,.06);
+      border-color: rgba(15,23,42,.14);
+    }
+    .mini .icon{
+      width:44px; height:44px;
+      border-radius:16px;
+      display:grid; place-items:center;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.92);
+      margin-bottom:6px;
+      font-size:20px;
+      color: var(--accent);
+      flex: 0 0 auto;
+    }
+    .mini h3{
+      margin:0;
+      font-size:16px;
+      line-height:1.25;
+      letter-spacing:-.1px;
+    }
+    .mini p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.55;
+      flex: 1 1 auto;
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+    @media (max-width: 980px){ .grid2{grid-template-columns:1fr} }
+    .box{
+      padding:20px;
+      border-radius: var(--r);
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow: 0 12px 30px rgba(15,23,42,.04);
+    }
+    .list{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:15px;
+    }
+    .list li{margin:7px 0}
+    .ok{color:#0f766e; font-weight:900}
+    .bad{color:#b91c1c; font-weight:900}
+
+    details{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius: var(--r);
+      padding:14px 16px;
+      margin:12px 0;
+      box-shadow: 0 12px 28px rgba(15,23,42,.03);
+    }
+    summary{cursor:pointer; font-weight:900; font-size:16px}
+    details p{margin:10px 0 0; color:var(--muted); font-size:15px}
+
+    /* CTA */
+    .cta{
+      margin-top:20px;
+      padding:22px;
+      border-radius: var(--r);
+      border:1px solid rgba(194,65,12,.18);
+      background: linear-gradient(135deg, rgba(194,65,12,.08), rgba(255,255,255,.86));
+      box-shadow: var(--shadow);
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      justify-content:space-between;
+    }
+    .cta h3{margin:0; font-size:18px}
+    .cta p{margin:6px 0 0; color:var(--muted); font-size:15px}
+
+    .form{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
     }
 
     footer{
@@ -195,6 +365,20 @@
       justify-content:space-between;
       gap:12px;
       flex-wrap:wrap;
+    }
+    footer a{color:rgba(91,102,122,.9)}
+    footer a:hover{text-decoration:underline}
+
+    /* Mobile polish */
+    @media (max-width: 720px){
+      .wrap{padding:18px}
+      header{flex-direction:column; align-items:flex-start}
+      nav{justify-content:flex-start}
+      .hero-left{padding:22px}
+      .hero-right{padding:14px}
+      .hero-media{min-height: 240px}
+      .btn{width:100%}
+      .actions{gap:10px}
     }
   </style>
 </head>
@@ -220,8 +404,149 @@
       </nav>
     </header>
 
+    <main class="hero" id="top">
+      <section class="card hero-left">
+        <div class="badge">🧡 Dành cho người Việt ở Đức • đơn giản • dễ dùng</div>
+
+        <h1>
+          Thấy phong bì có chữ <span class="h1">“Finanzamt”</span><br/>
+          là tim đập nhanh?
+        </h1>
+
+        <p class="lead">
+          Mỗi lần nhận thư từ <b>Finanzamt, Jobcenter, Ausländerbehörde…</b>
+          nhiều anh/chị đọc không hết, sợ làm sai, sợ trễ hạn.
+        </p>
+
+        <div class="softbox">
+          👉 Anh/chị chỉ cần <b>chụp hình</b> giấy tờ (hoặc gửi PDF).<br/>
+          GiaAn sẽ <b>giải thích ngắn gọn</b>, <b>giữ giúp</b>, và <b>nhắc trước khi tới hạn</b>
+          để anh/chị biết “thư này có gấp không”.
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="#lien-he">Tôi muốn dùng thử →</a>
+          <a class="btn btn-ghost" href="#cach-dung">Xem cách dùng</a>
+        </div>
+      </section>
+
+      <aside class="hero-right">
+        <div class="hero-media">
+          <img src="hero.webp" alt="Minh hoạ: đọc thư và cảm thấy an tâm">
+        </div>
+        <div class="hero-note">
+          Anh/chị không cần rành máy tính. GiaAn được làm để mọi thứ <b>đơn giản</b> và <b>dễ hiểu</b> nhất có thể.
+        </div>
+      </aside>
+    </main>
+
+    <section class="section" id="cach-dung">
+      <h2 class="section-title">Cách dùng (rất đơn giản)</h2>
+      <div class="grid3">
+        <div class="mini">
+          <div class="icon">📷</div>
+          <h3>1) Chụp & gửi</h3>
+          <p>Chụp ảnh giấy tờ hoặc gửi giấy tờ PDF qua Whatsapp.</p>
+        </div>
+        <div class="mini">
+          <div class="icon">📁</div>
+          <h3>2) GiaAn giải thích và giữ giúp</h3>
+          <p>Giải thích và xếp gọn theo từng loại giấy tờ, để dễ tìm lại.</p>
+        </div>
+        <div class="mini">
+          <div class="icon">⏰</div>
+          <h3>3) Nhắc trước hạn</h3>
+          <p>Không để anh/chị quên hoặc bị trễ.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="giaan-giup-gi">
+      <h2 class="section-title">GiaAn giúp gì?</h2>
+
+      <div class="grid2">
+        <div class="box">
+          <b>GiaAn giúp anh/chị 3 việc</b>
+          <ul class="list">
+            <li><span class="ok">✔</span> <b>Hiểu thư từ:</b> thư này nói gì, có gấp không.</li>
+            <li><span class="ok">✔</span> <b>Giữ giấy tờ:</b> gọn gàng, dễ tìm lại.</li>
+            <li><span class="ok">✔</span> <b>Nhắc hạn:</b> tránh trễ hạn rồi rắc rối.</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <b>GiaAn không làm gì?</b>
+          <ul class="list">
+            <li><span class="bad">✘</span> Không thay luật sư.</li>
+            <li><span class="bad">✘</span> Không thay tư vấn thuế.</li>
+            <li><span class="bad">✘</span> Không làm anh/chị rối thêm.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="hoi-dap">
+      <h2 class="section-title">Hỏi đáp nhanh</h2>
+
+      <details>
+        <summary>Tôi không rành máy tính, có dùng được không?</summary>
+        <p>Dùng được. GiaAn được làm để đơn giản nhất: chụp hình / gửi giấy tờ qua Whatsapp là xong.</p>
+      </details>
+
+      <details>
+        <summary>Tôi sợ lộ thông tin, có an toàn không?</summary>
+        <p>GiaAn ưu tiên riêng tư và bảo mật. Khi anh/chị muốn dừng dùng, anh/chị có thể yêu cầu xóa dữ liệu.</p>
+      </details>
+
+      <details>
+        <summary>GiaAn có miễn phí không?</summary>
+        <p>Hiện tại GiaAn đang miễn phí. Anh/chị có thể dùng mà không ràng buộc gì. Khi nào có thay đổi, mình sẽ báo trước rõ ràng.</p>
+      </details>
+    </section>
+
+    <section class="cta" id="lien-he">
+      <div>
+        <h3>Dùng GiaAn qua WhatsApp</h3>
+        <p>
+          Anh/chị chỉ cần nhắn tin qua WhatsApp.
+          Không cần cài thêm gì.
+        </p>
+
+        <div class="form">
+          <a
+            class="btn btn-primary"
+            href="https://wa.me/4915255474358"
+            target="_blank"
+            rel="noopener"
+          >
+            Nhắn WhatsApp ngay →
+          </a>
+        </div>
+
+        <div style="margin-top:10px; font-size:14px; color:var(--muted);">
+          Số WhatsApp: <b>0152-55474358</b>
+        </div>
+      </div>
+
+      <div style="min-width:260px">
+        <div class="box" style="border-color: rgba(194,65,12,.18); background: rgba(255,255,255,.85)">
+          <b>Gợi ý nhỏ</b>
+          <div style="color:var(--muted); margin-top:6px; font-size:14px">
+            Anh/chị chỉ cần gửi: <br>
+            “Chào GiaAn, tôi muốn dùng thử.”
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer>
       <div>© <span id="year"></span> GiaAn.de</div>
+      <div>
+        <a href="/about">Về GiaAn</a> ·
+        <a href="/impressum">Impressum</a> ·
+        <a href="/privacy">Datenschutz</a> ·
+        <a href="#top">Lên đầu ↑</a>
+      </div>
     </footer>
   </div>
 
