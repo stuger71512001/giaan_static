@@ -7,6 +7,7 @@
   <title>GiaAn — Hướng dẫn xóa dữ liệu cá nhân (DSGVO)</title>
   <meta name="description" content="Hướng dẫn xóa toàn bộ dữ liệu cá nhân trong GiaAn theo quy định DSGVO — trực tiếp qua chat." />
   <meta name="robots" content="index,follow" />
+
   <style>
     :root{
       --bg:#ffffff;
@@ -14,54 +15,76 @@
       --muted:#5b667a;
       --line:rgba(15,23,42,.10);
       --card:#ffffff;
-      --accent:#c2410c; /* dark orange */
+      --accent:#c2410c;
       --accent2:#ea580c;
       --ok:#0f766e;
       --warn:#b45309;
       --shadow:0 10px 30px rgba(2,6,23,.06);
       --radius:18px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family:var(--sans);
       color:var(--text);
-      background:linear-gradient(180deg, rgba(234,88,12,.06), rgba(234,88,12,0) 220px) , var(--bg);
+      background:linear-gradient(180deg, rgba(234,88,12,.06), rgba(234,88,12,0) 220px), var(--bg);
     }
-    a{color:inherit}
+
+    a{color:inherit;text-decoration:none}
+
     .wrap{max-width:980px;margin:0 auto;padding:28px 18px 60px}
+
     .topbar{
-      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      display:flex;align-items:center;justify-content:space-between;
       padding:10px 0 18px;border-bottom:1px solid var(--line);
     }
-    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+
+    .brand{display:flex;align-items:center;gap:12px}
+
     .logo{
-      width:34px;height:34px;border-radius:10px;
-      background:radial-gradient(120% 120% at 30% 20%, rgba(234,88,12,.35), rgba(194,65,12,.15) 55%, rgba(2,6,23,.02) 100%);
+      width:38px;
+      height:38px;
+      border-radius:12px;
       border:1px solid var(--line);
-      box-shadow:0 6px 18px rgba(234,88,12,.10);
+      box-shadow:0 6px 18px rgba(2,6,23,.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#fff;
+      overflow:hidden;
     }
-    .brand b{font-weight:650}
+
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      padding:4px;
+    }
+
     .badge{
       font-size:12px;color:var(--muted);
       border:1px solid var(--line);
-      padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.8);
+      padding:6px 10px;border-radius:999px;
     }
+
     header{padding:26px 0 18px}
-    h1{
-      margin:0 0 10px;
-      font-size: clamp(26px, 3vw, 34px);
-      letter-spacing:-.02em;
-      line-height:1.15;
-    }
-    .lead{margin:0;color:var(--muted);max-width:72ch;font-size:15.5px;line-height:1.6}
+    h1{margin:0 0 10px;font-size:32px;letter-spacing:-.02em}
+    .lead{color:var(--muted);max-width:720px;line-height:1.6}
+
     .grid{
-      display:grid;grid-template-columns: 1.1fr .9fr;gap:18px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
       margin-top:18px;
     }
-    @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+    }
+
     .card{
       background:var(--card);
       border:1px solid var(--line);
@@ -69,258 +92,167 @@
       box-shadow:var(--shadow);
       padding:18px;
     }
-    .card h2{
-      margin:0 0 10px;
-      font-size:18px;
-      letter-spacing:-.01em;
-    }
-    .muted{color:var(--muted)}
-    .hr{height:1px;background:var(--line);margin:14px 0}
+
+    .card h2{margin-top:0}
+
     table{width:100%;border-collapse:collapse;font-size:14px}
-    th,td{padding:10px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-    th{color:var(--muted);font-weight:600;text-align:left}
+    th,td{padding:10px;border-bottom:1px solid var(--line)}
+    th{color:var(--muted);text-align:left}
+
     .note{
-      border-left:3px solid rgba(234,88,12,.55);
+      margin-top:14px;
+      border-left:3px solid var(--accent);
       background:rgba(234,88,12,.06);
-      padding:12px 12px;border-radius:12px;
-      color:var(--text);
-      font-size:14px;line-height:1.55;
+      padding:12px;border-radius:12px;
     }
-    .steps{display:flex;flex-direction:column;gap:12px}
-    .step{
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:14px;
-      background:rgba(255,255,255,.75);
-    }
-    .stephead{
-      display:flex;align-items:center;gap:10px;margin-bottom:8px
-    }
-    .num{
-      width:26px;height:26px;border-radius:10px;
-      display:grid;place-items:center;
-      background:rgba(234,88,12,.12);
-      border:1px solid rgba(234,88,12,.25);
-      color:var(--accent);
-      font-weight:700;
-      font-size:13px;
-    }
-    .step h3{margin:0;font-size:15px}
-    ul{margin:8px 0 0 18px;color:var(--text)}
-    li{margin:6px 0;color:var(--text)}
+
+    .step{margin-bottom:18px}
+    .step h3{margin:0 0 6px}
     .quote{
-      margin:10px 0 0;
+      margin-top:10px;
       border:1px solid var(--line);
-      background:rgba(2,6,23,.02);
-      border-radius:14px;
-      padding:12px;
+      background:#f9fafb;
+      padding:12px;border-radius:12px;
       font-size:14px;
-      line-height:1.55;
     }
-    .quote b{font-weight:650}
+
     .kbd{
       font-family:var(--mono);
+      background:#fff;
+      border:1px solid var(--line);
+      padding:2px 6px;
+      border-radius:8px;
       font-size:13px;
-      padding:2px 8px;
-      border-radius:10px;
-      border:1px solid var(--line);
-      background:#fff;
-      box-shadow:0 1px 0 rgba(2,6,23,.04);
     }
-    .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .pill{
-      font-size:12.5px;
-      padding:6px 10px;border-radius:999px;
-      border:1px solid var(--line);
-      background:#fff;
-      color:var(--muted);
-    }
-    .ok{border-color:rgba(15,118,110,.25);background:rgba(15,118,110,.06);color:var(--ok)}
-    .warn{border-color:rgba(180,83,9,.25);background:rgba(180,83,9,.06);color:var(--warn)}
+
     footer{
-      margin-top:22px;
+      margin-top:40px;
       padding-top:18px;
       border-top:1px solid var(--line);
+      font-size:13px;
       color:var(--muted);
-      font-size:12.5px;
-      display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
     }
-    .lang{
-      display:flex;gap:10px;flex-wrap:wrap;
-    }
-    .small{font-size:12.5px}
   </style>
 </head>
 
 <body>
   <div class="wrap">
+
     <div class="topbar">
-      <a class="brand" href="/" aria-label="GiaAn Home">
-          <div class="logo">
-          <img src="./assets/logo.png" alt="GiaAn Logo">
+      <div class="brand">
+        <div class="logo">
+          <img src="logo.png" alt="GiaAn Logo">
         </div>
         <div>
-          <div><b>GiaAn</b> <span class="muted">— DSGVO</span></div>
-          <div class="small muted">Hướng dẫn xóa dữ liệu cá nhân</div>
+          <strong>GiaAn</strong><br>
+          <span style="font-size:13px;color:var(--muted)">DSGVO Datenlöschung</span>
         </div>
-      </a>
-      <div class="badge">Stand: 02/2026</div>
+      </div>
+      <div class="badge">Stand 02/2026</div>
     </div>
 
     <header>
       <h1>Hướng dẫn xóa dữ liệu cá nhân (DSGVO)</h1>
       <p class="lead">
-        GiaAn hỗ trợ xóa <b>toàn bộ</b> dữ liệu cá nhân của bạn theo quy định DSGVO (Datenschutz-Grundverordnung) —
+        GiaAn hỗ trợ xóa toàn bộ dữ liệu cá nhân của bạn theo quy định DSGVO —
         trực tiếp qua chat, không cần liên hệ quản trị viên.
       </p>
     </header>
 
     <div class="grid">
+
       <section class="card">
         <h2>Dữ liệu sẽ bị xóa</h2>
-        <p class="muted" style="margin:0 0 10px;line-height:1.6">
-          Khi xác nhận xóa, <b>tất cả</b> dữ liệu sau sẽ bị xóa vĩnh viễn:
-        </p>
 
-        <div style="overflow:auto;border-radius:14px;border:1px solid var(--line)">
-          <table>
-            <thead>
-              <tr>
-                <th style="min-width:180px">Loại dữ liệu</th>
-                <th>Mô tả</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Giấy tờ / tài liệu</b></td>
-                <td>File đã upload (ảnh, PDF, …) trên hệ thống lưu trữ</td>
-              </tr>
-              <tr>
-                <td><b>Kết quả OCR</b></td>
-                <td>Nội dung đã trích xuất từ giấy tờ</td>
-              </tr>
-              <tr>
-                <td><b>Nhắc hạn (Deadline)</b></td>
-                <td>Tất cả Frist / hạn chót đã được phát hiện và theo dõi</td>
-              </tr>
-              <tr>
-                <td><b>Lịch sử chat</b></td>
-                <td>Toàn bộ hội thoại và bộ nhớ ngữ cảnh</td>
-              </tr>
-              <tr>
-                <td><b>Hồ sơ cá nhân</b></td>
-                <td>Tên, xưng hô và thông tin profile</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="hr"></div>
+        <table>
+          <thead>
+            <tr>
+              <th>Loại dữ liệu</th>
+              <th>Mô tả</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Giấy tờ / tài liệu</td>
+              <td>File đã upload (ảnh, PDF…)</td>
+            </tr>
+            <tr>
+              <td>Kết quả OCR</td>
+              <td>Nội dung trích xuất từ giấy tờ</td>
+            </tr>
+            <tr>
+              <td>Nhắc hạn</td>
+              <td>Tất cả Frist / deadline</td>
+            </tr>
+            <tr>
+              <td>Lịch sử chat</td>
+              <td>Toàn bộ hội thoại</td>
+            </tr>
+            <tr>
+              <td>Hồ sơ cá nhân</td>
+              <td>Tên, xưng hô, profile</td>
+            </tr>
+          </tbody>
+        </table>
 
         <div class="note">
-          <b>Lưu ý:</b> Sau khi xóa, dữ liệu <b>không thể khôi phục</b>.
-        </div>
-
-        <div class="pillrow" aria-label="status badges">
-          <span class="pill warn">Không thể hoàn tác</span>
-          <span class="pill ok">Xóa trực tiếp qua chat</span>
-          <span class="pill">Không cần admin</span>
+          <strong>Lưu ý:</strong> Sau khi xóa, dữ liệu không thể khôi phục.
         </div>
       </section>
 
-      <aside class="card">
+      <section class="card">
         <h2>Các bước thực hiện</h2>
-        <div class="steps">
-          <div class="step">
-            <div class="stephead">
-              <div class="num">1</div>
-              <h3>Bước 1 — Yêu cầu xóa</h3>
-            </div>
-            <div class="muted" style="font-size:14px;line-height:1.55">
-              Nhắn cho GiaAn bất kỳ câu nào thể hiện ý muốn xóa dữ liệu, ví dụ:
-            </div>
-            <ul>
-              <li><i>“Xóa hết dữ liệu của tôi”</i></li>
-              <li><i>“Tôi muốn xóa tài khoản”</i></li>
-              <li><i>“Lösche meine Daten”</i> (tiếng Đức)</li>
-              <li><i>“Delete all my data”</i> (tiếng Anh)</li>
-            </ul>
 
-            <div class="quote">
-              <b>GiaAn sẽ trả lời:</b><br/>
-              Dạ được anh/chị.<br/>
-              Việc này sẽ xóa toàn bộ: giấy tờ, nhắc hạn và lịch sử chat.<br/>
-              Anh/chị xác nhận muốn xóa vĩnh viễn không ạ? <b>(Có/Không)</b>
-            </div>
-          </div>
+        <div class="step">
+          <h3>Bước 1 — Yêu cầu xóa</h3>
+          <p>Nhắn một trong các câu:</p>
+          <ul>
+            <li>"Xóa hết dữ liệu của tôi"</li>
+            <li>"Tôi muốn xóa tài khoản"</li>
+            <li>"Lösche meine Daten"</li>
+            <li>"Delete all my data"</li>
+          </ul>
 
-          <div class="step">
-            <div class="stephead">
-              <div class="num">2</div>
-              <h3>Bước 2 — Xác nhận lần 1</h3>
-            </div>
-            <div class="muted" style="font-size:14px;line-height:1.55">
-              Trả lời <b>Có</b> để tiếp tục, hoặc <b>Không</b> để hủy.
-              Các từ được chấp nhận là <b>đồng ý</b>:
-            </div>
-
-            <div style="overflow:auto;margin-top:10px;border-radius:14px;border:1px solid var(--line)">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Tiếng Việt</th>
-                    <th>Tiếng Anh</th>
-                    <th>Tiếng Đức</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Có, Dạ, Được, Vâng, Rồi</td>
-                    <td>Yes, Y, OK</td>
-                    <td>Ja</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="quote">
-              <b>Sau đó GiaAn sẽ hỏi xác nhận lần cuối:</b><br/>
-              Em cần anh/chị xác nhận lần cuối.<br/>
-              Sau khi xóa sẽ không khôi phục lại được.<br/>
-              Anh/chị xác nhận xóa toàn bộ dữ liệu không ạ? <b>(XÓA)</b>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="stephead">
-              <div class="num">3</div>
-              <h3>Bước 3 — Xác nhận lần cuối</h3>
-            </div>
-            <div class="muted" style="font-size:14px;line-height:1.55">
-              Gõ <span class="kbd">XÓA</span> (hoặc <span class="kbd">xoa</span>) để xác nhận xóa vĩnh viễn.
-              Nếu gõ bất kỳ từ nào khác → hủy bỏ, dữ liệu được giữ nguyên.
-            </div>
-
-            <div class="pillrow">
-              <span class="pill ok">✅ Thành công: “Đã xóa toàn bộ dữ liệu… Tạm biệt!”</span>
-              <span class="pill warn">⚠️ Lỗi: “Xóa dữ liệu chưa hoàn tất…”</span>
-            </div>
+          <div class="quote">
+            GiaAn sẽ hỏi xác nhận:
+            <br><br>
+            "Anh/chị xác nhận muốn xóa vĩnh viễn không? (Có/Không)"
           </div>
         </div>
-      </aside>
+
+        <div class="step">
+          <h3>Bước 2 — Xác nhận lần 1</h3>
+          <p>Các từ đồng ý được chấp nhận:</p>
+          <p><strong>Có, Dạ, Vâng, Yes, Ja</strong></p>
+
+          <div class="quote">
+            GiaAn sẽ hỏi lần cuối:
+            <br><br>
+            "Anh/chị xác nhận xóa toàn bộ dữ liệu? (XÓA)"
+          </div>
+        </div>
+
+        <div class="step">
+          <h3>Bước 3 — Xác nhận cuối</h3>
+          <p>Gõ <span class="kbd">XÓA</span> hoặc <span class="kbd">xoa</span>.</p>
+
+          <p>
+            ✅ Thành công: "Đã xóa toàn bộ dữ liệu."<br>
+            ⚠️ Lỗi: "Xóa chưa hoàn tất."
+          </p>
+        </div>
+
+      </section>
     </div>
 
     <footer>
-      <div>
-        <div><b>GiaAn Assistant</b> — Datenschutz / DSGVO</div>
-        <div class="small">Liên hệ: <a href="mailto:info@giaan.de">info@giaan.de</a></div>
-      </div>
-      <div class="lang">
-        <a class="small" href="https://giaan.de/privacy">Datenschutzerklärung</a>
-        <span class="small">•</span>
-        <a class="small" href="https://giaan.de/impressum">Impressum</a>
-      </div>
+      <div>GiaAn Assistant — DSGVO</div>
+      <div>info@giaan.de</div>
     </footer>
+
   </div>
 </body>
 </html>
